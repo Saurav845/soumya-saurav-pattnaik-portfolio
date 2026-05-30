@@ -33,7 +33,6 @@ import {
   Terminal,
   TestTubeDiagonal,
   TimerReset,
-  Trophy,
   type LucideIcon
 } from "lucide-react";
 
@@ -45,6 +44,10 @@ type Project = {
   summary: string;
   impact: string;
   tech: string[];
+  problem: string;
+  solution: string;
+  architecture: string[];
+  features: string[];
   tone: "cyan" | "blue" | "emerald";
 };
 
@@ -52,13 +55,14 @@ const navItems: NavItem[] = [
   { label: "About", href: "#about" },
   { label: "Stack", href: "#stack" },
   { label: "Experience", href: "#experience" },
-  { label: "Projects", href: "#projects" },
+  { label: "Work", href: "#work" },
   { label: "Contact", href: "#contact" }
 ];
 
 const heroMetrics = [
   { value: "5+", label: "Years in QA automation" },
   { value: "95%+", label: "Critical path coverage" },
+  { value: "12", label: "Member QA team led" },
   { value: "0", label: "Critical prod escapes" }
 ];
 
@@ -66,25 +70,25 @@ const techCategories: TechCategory[] = [
   {
     title: "Automation",
     icon: TestTubeDiagonal,
-    items: ["Selenium", "Appium", "Playwright", "TestNG", "JUnit", "Cucumber"],
+    items: ["Playwright", "Selenium", "Appium", "TestNG", "JUnit", "Cucumber", "BDD"],
     level: 94
   },
   {
     title: "API & Performance",
     icon: Gauge,
-    items: ["Rest Assured", "Postman", "JMeter", "GraphQL Testing"],
+    items: ["Rest Assured", "Postman", "JMeter", "K6", "GraphQL Testing", "Contract Testing"],
     level: 89
   },
   {
     title: "Backend & DevOps",
     icon: GitBranch,
-    items: ["Java", "Maven", "Jenkins", "GitHub Actions", "Docker", "CI/CD"],
+    items: ["Java", "Maven", "Jenkins", "GitHub Actions", "Docker", "AWS", "CI/CD"],
     level: 91
   },
   {
     title: "Monitoring & AI",
     icon: BrainCircuit,
-    items: ["Firebase Crashlytics", "Grafana", "AI-driven Testing", "LLM Test Generation"],
+    items: ["Firebase Crashlytics", "Grafana", "Kibana", "AI-driven Testing", "LLM Testing", "Prompt Engineering"],
     level: 87
   },
   {
@@ -130,28 +134,81 @@ const experiences: Experience[] = [
 
 const projects: Project[] = [
   {
-    title: "SportstechLive Mobile Platform",
+    title: "Sportstech Mobile Quality Platform",
     summary:
-      "Enterprise mobile automation architecture for member journeys, connected fitness flows, release gates, and crash intelligence.",
-    impact: "Raised mobile release confidence through Appium, Firebase, Grafana dashboards, and AI-assisted test prioritization.",
-    tech: ["Appium", "Java", "Firebase", "Grafana", "CI/CD", "AI QA"],
+      "Mobile automation and quality visibility for fitness commerce, member journeys, and live platform workflows.",
+    impact: "Improved release confidence by connecting Appium coverage, CI feedback, crash signals, and dashboard-level reporting.",
+    problem:
+      "Mobile releases needed faster regression feedback without losing confidence across critical customer journeys.",
+    solution:
+      "Built structured mobile automation, CI quality gates, and observability touchpoints so teams could see risk earlier.",
+    architecture: ["Appium framework", "Java/TestNG suites", "Jenkins pipelines", "Firebase Crashlytics", "Grafana dashboards", "Release quality gates"],
+    features: ["Critical journey coverage", "CI execution visibility", "Crash signal review", "Regression ownership", "Release readiness reporting"],
+    tech: ["Appium", "Java", "TestNG", "Jenkins", "Firebase", "Grafana"],
     tone: "cyan"
   },
   {
     title: "Cocoon Live Bidding Platform",
     summary:
-      "BDD automation suite for live bidding, GST, marketplace transactions, and cross-device execution stability.",
-    impact: "Automated 200+ scenarios and improved suite execution speed with BrowserStack optimization.",
+      "Automation coverage for live bidding, GST workflows, marketplace transactions, and cross-device execution.",
+    impact: "Automated 200+ scenarios and improved suite stability with Selenium, Appium, Cucumber, and BrowserStack.",
+    problem:
+      "High-value marketplace flows needed repeatable coverage across web, mobile, and business-critical transaction paths.",
+    solution:
+      "Created BDD-oriented automation suites and optimized BrowserStack runs for better feedback during releases.",
+    architecture: ["Selenium web tests", "Appium mobile tests", "Cucumber scenarios", "BrowserStack grid", "TestNG execution", "Defect triage loop"],
+    features: ["Live bidding coverage", "GST workflow validation", "Cross-device execution", "BDD scenario design", "Regression optimization"],
     tech: ["Selenium", "Appium", "Cucumber", "BrowserStack", "TestNG"],
     tone: "blue"
   },
   {
-    title: "AI Validation Hub",
+    title: "FitBot AI Test Assistant",
     summary:
-      "Futuristic orchestration concept for intelligent execution tracking, self-healing automation, and quality observability.",
-    impact: "Inspired by real-time validation dashboards, AI triage, and automation health intelligence.",
-    tech: ["Playwright", "LLM", "Grafana", "Node", "Quality Signals"],
+      "An experimental QA assistant concept for test run monitoring, failure summaries, and faster investigation.",
+    impact: "Shows how AI can support quality work without replacing the engineering discipline behind test design and triage.",
+    problem:
+      "Teams spend too much release time reading scattered logs, screenshots, and repeated failure patterns.",
+    solution:
+      "Designed a copilot workflow that groups failures, summarizes likely causes, and prepares clean handoff notes.",
+    architecture: ["Execution listener", "Artifact collector", "Failure grouping", "RCA summary", "Report handoff"],
+    features: ["Live run monitoring", "Failure clustering", "RCA notes", "Health scoring", "Self-healing suggestions"],
+    tech: ["Playwright", "Appium", "Jenkins", "LLM", "Grafana"],
     tone: "emerald"
+  },
+  {
+    title: "TokenScope Dashboard",
+    summary:
+      "A practical dashboard concept for tracking AI token usage, cost trends, and team-wise consumption.",
+    impact: "Extends quality engineering into AI observability, cost awareness, and responsible platform usage.",
+    problem:
+      "AI usage can grow quickly without enough visibility into provider cost, model usage, and team-level trends.",
+    solution:
+      "Mapped token monitoring, usage trends, forecasting, and optimization views into one operational dashboard.",
+    architecture: ["Provider adapters", "Usage storage", "Cost analytics", "Forecasting view", "Team reports"],
+    features: ["OpenAI usage", "Claude usage", "Gemini usage", "Cost trends", "Team consumption", "Forecasting"],
+    tech: ["OpenAI", "Claude", "Gemini", "Next.js", "AWS"],
+    tone: "emerald"
+  }
+];
+
+const architectureBlueprints = [
+  {
+    title: "Enterprise Automation Mesh",
+    icon: Network,
+    flow: ["Code change", "CI trigger", "Web/Mobile/API suites", "Performance gates", "Signal dashboard", "Release decision"],
+    value: "Turns scattered automation into one release-confidence system."
+  },
+  {
+    title: "Failure RCA Workflow",
+    icon: BrainCircuit,
+    flow: ["Failure event", "Artifact collection", "Pattern matching", "Cause hypothesis", "Owner routing", "Prevention note"],
+    value: "Moves teams from failure logs to explainable triage."
+  },
+  {
+    title: "TokenScope Observability",
+    icon: Activity,
+    flow: ["Provider usage", "Team attribution", "Cost forecast", "Anomaly alert", "Optimization action", "Governance report"],
+    value: "Shows platform thinking beyond test automation."
   }
 ];
 
@@ -179,7 +236,7 @@ const testimonials = [
   },
   {
     quote:
-      "Soumya brings the rare mix of hands-on framework depth, QA leadership, and a clear point of view on AI-assisted testing.",
+      "Soumya brings the rare mix of hands-on framework depth, QA leadership, and calm release judgment.",
     reviewer: "QA Practice Partner",
     company: "Technology Services"
   }
@@ -198,12 +255,12 @@ const codeLines = [
   "quality.pipeline('mobile-release')",
   "  .gate(AppiumSuite.criticalPath())",
   "  .observe(Firebase.crashSignals())",
-  "  .prioritize(LLM.riskModel())",
+  "  .prioritize(riskModel.criticalJourneys())",
   "  .deployWhen(confidence >= 0.95);"
 ];
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 26 },
+  hidden: { opacity: 1, y: 0 },
   visible: { opacity: 1, y: 0 }
 };
 
@@ -355,9 +412,6 @@ function HeroVisual() {
   return (
     <motion.div
       className="relative mx-auto w-full max-w-[560px]"
-      initial={{ opacity: 0, scale: 0.96, y: 24 }}
-      animate={{ opacity: 1, scale: 1, y: 0 }}
-      transition={{ duration: 0.8, delay: 0.2 }}
     >
       <div className="absolute inset-4 rounded-[8px] border border-cyan-300/20 bg-cyan-300/5 blur-2xl" />
       <div className="glass cyber-border scanline relative rounded-[8px] p-4 neo">
@@ -378,7 +432,7 @@ function HeroVisual() {
             <motion.code
               key={line}
               className="block"
-              initial={{ opacity: 0, x: -12 }}
+              initial={false}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.45 + index * 0.12 }}
             >
@@ -390,7 +444,7 @@ function HeroVisual() {
 
         <div className="mt-4 grid grid-cols-3 gap-3">
           {[
-            { icon: Bot, label: "AI Triage", value: "92%" },
+            { icon: Bot, label: "Triage", value: "92%" },
             { icon: Activity, label: "Signals", value: "Live" },
             { icon: ShieldCheck, label: "Risk", value: "Low" }
           ].map((item) => (
@@ -410,7 +464,7 @@ function HeroVisual() {
           <div className="h-2 overflow-hidden rounded-full bg-white/8">
             <motion.div
               className="h-full rounded-full bg-gradient-to-r from-cyan-300 via-blue-400 to-emerald-300"
-              initial={{ width: "0%" }}
+              initial={false}
               animate={{ width: "95.8%" }}
               transition={{ duration: 1.6, delay: 0.8, ease: "easeOut" }}
             />
@@ -441,30 +495,26 @@ function HeroSection() {
     <section id="hero" className="relative min-h-screen overflow-hidden pb-16 pt-28 sm:pt-32">
       <div className="noise absolute inset-0 opacity-[0.06]" aria-hidden="true" />
       <div className="section-shell relative grid min-h-[calc(100vh-8rem)] items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
-        <motion.div
-          initial={{ opacity: 0, y: 28 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.75 }}
-        >
+        <div>
           <div className="mb-6 inline-flex items-center gap-2 rounded-[8px] border border-cyan-300/24 bg-cyan-300/8 px-3 py-2 text-sm text-cyan-100">
             <Sparkles size={16} aria-hidden="true" />
-            AI-powered quality engineering for modern software
+            Senior SDET | QA Automation Engineer | Test Architect
           </div>
           <h1 className="font-sora text-4xl font-semibold leading-[1.05] text-white sm:text-6xl xl:text-7xl">
-            Engineering Quality at Scale with{" "}
-            <span className="text-gradient">AI-Driven Automation</span>
+            Soumya Saurav Pattnaik{" "}
+            <span className="text-gradient">builds reliable automation systems</span>
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300 sm:text-xl">
-            Senior Software Engineer in QA Automation, SDET, and Automation Architect with 5+ years
-            building mobile, API, and web automation ecosystems, CI/CD quality gates, performance
-            validation, and enterprise-grade AI-assisted testing practices.
+            I help engineering teams release with confidence through mobile, web, API, and
+            performance automation. My work combines hands-on framework building, CI/CD quality
+            gates, observability, and thoughtful use of AI where it genuinely helps.
           </p>
 
           <div className="mt-8 flex flex-wrap gap-3">
             <PrimaryButton href="#contact" icon={Mail}>
               Hire Me
             </PrimaryButton>
-            <GhostButton href="#projects" icon={ExternalLink}>
+            <GhostButton href="#work" icon={ExternalLink}>
               View Projects
             </GhostButton>
             <GhostButton
@@ -487,7 +537,7 @@ function HeroSection() {
               </div>
             ))}
           </div>
-        </motion.div>
+        </div>
 
         <HeroVisual />
       </div>
@@ -515,7 +565,7 @@ function AboutSection() {
       <div className="section-shell">
         <SectionHeading kicker="About Me" title="Quality architecture with a product engineer's mindset">
           I design automation systems that make releases faster, safer, and easier to reason about.
-          My work blends hands-on SDET engineering, AI-assisted quality strategy, team leadership,
+          My work blends hands-on SDET engineering, practical automation strategy, team leadership,
           and production observability.
         </SectionHeading>
 
@@ -538,7 +588,7 @@ function AboutSection() {
                 Automation Architect
               </div>
               <div className="absolute right-5 top-5 rounded-[8px] border border-emerald-300/25 bg-emerald-300/10 px-3 py-2 text-xs text-emerald-100">
-                AI QA Systems
+                Quality Systems
               </div>
             </div>
           </motion.div>
@@ -552,14 +602,14 @@ function AboutSection() {
               variants={fadeUp}
             >
               <h3 className="font-sora text-2xl font-semibold text-white">
-                Building intelligent test ecosystems for modern software
+                Building test systems that teams can trust
               </h3>
               <p className="mt-4 leading-8 text-slate-300">
                 My quality philosophy is simple: automation should behave like an engineering
                 product. It needs architecture, observability, maintainability, fast feedback, and
                 clear business value. I create scalable frameworks for mobile, web, API, and
-                performance testing while helping teams adopt AI-augmented test generation,
-                intelligent prioritization, and release-risk visibility.
+                performance testing while helping teams make better release decisions with clear
+                signals instead of guesswork.
               </p>
             </motion.div>
 
@@ -568,7 +618,7 @@ function AboutSection() {
                 <motion.div
                   key={label}
                   className="glass rounded-[8px] p-5 transition hover:border-cyan-300/30 hover:shadow-[0_0_28px_rgba(46,233,255,0.12)]"
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={false}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.08 }}
@@ -589,9 +639,9 @@ function TechStackSection() {
   return (
     <section id="stack" className="py-24">
       <div className="section-shell">
-        <SectionHeading kicker="Tech Stack" title="Automation tooling with enterprise delivery depth">
+        <SectionHeading kicker="Tech Stack" title="Tools I use to build release confidence">
           A balanced stack across UI automation, mobile testing, API confidence, performance,
-          observability, CI/CD, and AI-assisted quality workflows.
+          observability, CI/CD, and practical AI-assisted workflows where they add value.
         </SectionHeading>
 
         <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
@@ -599,7 +649,7 @@ function TechStackSection() {
             <motion.article
               key={category.title}
               className="glass group rounded-[8px] p-5 transition hover:-translate-y-1 hover:border-cyan-300/28 hover:shadow-[0_0_36px_rgba(46,233,255,0.14)]"
-              initial={{ opacity: 0, y: 24 }}
+              initial={false}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ delay: index * 0.05 }}
@@ -617,7 +667,7 @@ function TechStackSection() {
               <div className="mt-5 h-2 overflow-hidden rounded-full bg-white/8">
                 <motion.div
                   className="h-full rounded-full bg-gradient-to-r from-cyan-300 via-blue-400 to-emerald-300"
-                  initial={{ width: "0%" }}
+                  initial={false}
                   whileInView={{ width: `${category.level}%` }}
                   viewport={{ once: true }}
                   transition={{ duration: 1, delay: 0.15 }}
@@ -646,9 +696,9 @@ function ExperienceTimeline() {
   return (
     <section id="experience" className="py-24">
       <div className="section-shell">
-        <SectionHeading kicker="Experience Timeline" title="From test execution to quality architecture">
+        <SectionHeading kicker="Experience" title="From hands-on testing to quality architecture">
           A progression through hands-on automation, mobile quality systems, team leadership, and
-          AI-augmented engineering practices.
+          engineering practices that make releases easier to trust.
         </SectionHeading>
 
         <div className="relative mx-auto max-w-4xl">
@@ -657,7 +707,7 @@ function ExperienceTimeline() {
             <motion.article
               key={experience.company}
               className="relative mb-6 md:pl-14"
-              initial={{ opacity: 0, x: -24 }}
+              initial={false}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ delay: index * 0.1 }}
@@ -702,7 +752,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
   return (
     <motion.article
       className="glass group flex h-full flex-col overflow-hidden rounded-[8px] transition hover:-translate-y-1 hover:border-cyan-300/30 hover:shadow-[0_0_42px_rgba(46,233,255,0.13)]"
-      initial={{ opacity: 0, y: 26 }}
+      initial={false}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
       transition={{ delay: index * 0.08 }}
@@ -727,7 +777,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
           </div>
           <motion.div
             className="mt-8 h-2 rounded-full bg-white/18"
-            initial={{ width: "24%" }}
+            initial={false}
             whileInView={{ width: "86%" }}
             viewport={{ once: true }}
             transition={{ duration: 1.2, delay: 0.2 }}
@@ -741,6 +791,44 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
         <p className="mt-4 border-l border-cyan-300/30 pl-4 text-sm leading-6 text-cyan-100/90">
           {project.impact}
         </p>
+        <div className="mt-5 grid gap-3 text-sm leading-6">
+          <div className="rounded-[8px] border border-white/10 bg-black/20 p-3">
+            <p className="font-semibold text-white">Problem</p>
+            <p className="mt-1 text-slate-400">{project.problem}</p>
+          </div>
+          <div className="rounded-[8px] border border-white/10 bg-black/20 p-3">
+            <p className="font-semibold text-white">Solution</p>
+            <p className="mt-1 text-slate-400">{project.solution}</p>
+          </div>
+        </div>
+        <div className="mt-5">
+          <p className="font-space text-xs font-semibold uppercase tracking-[0.22em] text-emerald-200">
+            Architecture
+          </p>
+          <div className="mt-3 flex flex-wrap gap-2">
+            {project.architecture.map((item) => (
+              <span
+                key={item}
+                className="rounded-[8px] border border-emerald-300/18 bg-emerald-300/8 px-3 py-1.5 text-xs text-emerald-50"
+              >
+                {item}
+              </span>
+            ))}
+          </div>
+        </div>
+        <div className="mt-5">
+          <p className="font-space text-xs font-semibold uppercase tracking-[0.22em] text-cyan-200">
+            Key Features
+          </p>
+          <div className="mt-3 grid gap-2">
+            {project.features.slice(0, 6).map((feature) => (
+              <div key={feature} className="flex gap-2 text-sm text-slate-300">
+                <CheckCircle2 className="mt-0.5 shrink-0 text-cyan-200" size={15} aria-hidden="true" />
+                <span>{feature}</span>
+              </div>
+            ))}
+          </div>
+        </div>
         <div className="mt-5 flex flex-wrap gap-2">
           {project.tech.map((tech) => (
             <span key={tech} className="rounded-[8px] border border-white/10 bg-white/[0.04] px-3 py-1.5 text-xs text-slate-300">
@@ -771,15 +859,66 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 
 function ProjectsSection() {
   return (
-    <section id="projects" className="py-24">
+    <section id="work" className="py-24">
       <div className="section-shell">
-        <SectionHeading kicker="Featured Projects" title="Recruiter-ready proof of automation impact">
-          Project work that translates technical depth into release velocity, stability, coverage,
-          and intelligent execution tracking.
+        <SectionHeading kicker="Selected Work" title="Projects grounded in real quality problems">
+          A focused set of work across mobile automation, marketplace testing, AI-assisted QA, and
+          engineering dashboards. Each project is framed around the problem, the approach, and the
+          quality outcome.
         </SectionHeading>
-        <div className="grid gap-6 lg:grid-cols-3">
+        <div className="grid gap-6 lg:grid-cols-2">
           {projects.map((project, index) => (
             <ProjectCard key={project.title} project={project} index={index} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ArchitectureGallerySection() {
+  return (
+    <section id="architecture" className="py-24">
+      <div className="section-shell">
+        <SectionHeading kicker="How I Think" title="The quality systems behind the work">
+          A few simple workflows that show how I connect automation, CI feedback, production
+          signals, and release decisions.
+        </SectionHeading>
+
+        <div className="grid gap-6 lg:grid-cols-3">
+          {architectureBlueprints.map((blueprint, index) => (
+            <motion.article
+              key={blueprint.title}
+              className="glass cyber-border rounded-[8px] p-5"
+              initial={false}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ delay: index * 0.08 }}
+            >
+              <div className="flex items-center gap-3">
+                <span className="grid size-11 place-items-center rounded-[8px] border border-cyan-300/24 bg-cyan-300/10 text-cyan-100">
+                  <blueprint.icon size={21} aria-hidden="true" />
+                </span>
+                <h3 className="font-sora text-xl font-semibold text-white">{blueprint.title}</h3>
+              </div>
+
+              <div className="mt-6 grid gap-3">
+                {blueprint.flow.map((step, stepIndex) => (
+                  <div key={step} className="flex items-center gap-3">
+                    <span className="grid size-8 shrink-0 place-items-center rounded-[8px] border border-emerald-300/20 bg-emerald-300/8 font-space text-xs text-emerald-100">
+                      {stepIndex + 1}
+                    </span>
+                    <span className="min-w-0 rounded-[8px] border border-white/10 bg-white/[0.04] px-3 py-2 text-sm text-slate-300">
+                      {step}
+                    </span>
+                  </div>
+                ))}
+              </div>
+
+              <p className="mt-5 border-l border-cyan-300/28 pl-4 text-sm leading-6 text-cyan-100/90">
+                {blueprint.value}
+              </p>
+            </motion.article>
           ))}
         </div>
       </div>
@@ -791,7 +930,7 @@ function AchievementsSection() {
   return (
     <section id="achievements" className="py-24">
       <div className="section-shell">
-        <SectionHeading kicker="Achievements" title="Quality outcomes that hiring teams can measure">
+        <SectionHeading kicker="Achievements" title="Quality outcomes teams can measure">
           Clear engineering wins across release speed, automation adoption, test coverage, execution
           time, production confidence, and QA team leadership.
         </SectionHeading>
@@ -800,7 +939,7 @@ function AchievementsSection() {
             <motion.div
               key={achievement.label}
               className="glass rounded-[8px] p-6 transition hover:-translate-y-1 hover:border-emerald-300/28 hover:shadow-[0_0_34px_rgba(77,255,180,0.13)]"
-              initial={{ opacity: 0, scale: 0.97 }}
+              initial={false}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.05 }}
@@ -830,7 +969,7 @@ function TestimonialsSection() {
           <motion.div
             key={testimonial.quote}
             className="glass cyber-border rounded-[8px] p-6 sm:p-8"
-            initial={{ opacity: 0, x: 24 }}
+            initial={false}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.45 }}
           >
@@ -891,7 +1030,7 @@ function CertificationsSection() {
             <motion.div
               key={cert}
               className="glass flex items-center gap-4 rounded-[8px] p-5 transition hover:-translate-y-1 hover:border-blue-300/28 hover:shadow-[0_0_30px_rgba(74,125,255,0.14)]"
-              initial={{ opacity: 0, y: 18 }}
+              initial={false}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.05 }}
@@ -942,7 +1081,7 @@ function ContactSection() {
     <section id="contact" className="py-24">
       <div className="section-shell">
         <SectionHeading kicker="Contact" title="Let’s build intelligent quality systems">
-          Available for senior SDET roles, automation architecture, AI-assisted quality strategy, and
+          Available for senior SDET roles, automation architecture, quality strategy, and
           high-impact QA leadership opportunities.
         </SectionHeading>
 
@@ -1052,7 +1191,7 @@ function Footer() {
             Soumya Saurav Pattnaik Portfolio
           </p>
           <p className="mt-2 text-sm text-slate-400">
-            Built with passion for quality engineering &amp; AI automation.
+            Built with passion for quality engineering and automation craft.
           </p>
         </div>
         <div className="flex flex-wrap gap-2">
@@ -1074,41 +1213,20 @@ function Footer() {
   );
 }
 
-function LoadingIntro() {
-  return (
-    <motion.div
-      className="fixed inset-0 z-[60] grid place-items-center bg-[#08090d]"
-      initial={{ opacity: 1 }}
-      animate={{ opacity: 0, pointerEvents: "none" }}
-      transition={{ delay: 1.1, duration: 0.55 }}
-    >
-      <motion.div
-        className="grid place-items-center gap-5"
-        initial={{ scale: 0.96 }}
-        animate={{ scale: 1 }}
-        transition={{ duration: 0.7 }}
-      >
-        <div className="grid size-16 place-items-center rounded-[8px] border border-cyan-300/35 bg-cyan-300/10 text-cyan-100">
-          <Trophy size={28} aria-hidden="true" />
-        </div>
-        <p className="font-space text-sm uppercase tracking-[0.32em] text-cyan-100">
-          Calibrating Quality Signals
-        </p>
-      </motion.div>
-    </motion.div>
-  );
-}
-
 function MarqueeStrip() {
   const skills = useMemo(
     () => [
       "QA Automation",
       "Mobile Automation",
       "API Automation",
-      "AI-Augmented Testing",
+      "Smart Test Triage",
       "CI/CD Integration",
       "Performance Testing",
       "Observability",
+      "Prompt Evaluation",
+      "Prompt Engineering",
+      "K6",
+      "Rest Assured",
       "Test Architecture",
       "Automation Strategy"
     ],
@@ -1137,7 +1255,6 @@ function MarqueeStrip() {
 export function Portfolio() {
   return (
     <main className="relative">
-      <LoadingIntro />
       <CursorGlow />
       <Navbar />
       <HeroSection />
@@ -1146,6 +1263,7 @@ export function Portfolio() {
       <TechStackSection />
       <ExperienceTimeline />
       <ProjectsSection />
+      <ArchitectureGallerySection />
       <AchievementsSection />
       <TestimonialsSection />
       <CertificationsSection />
