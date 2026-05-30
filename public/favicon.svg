@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="SS portfolio favicon">
+  <rect width="64" height="64" rx="8" fill="#08090d"/>
+  <path d="M12 14h40v36H12z" fill="#10131a" stroke="#2ee9ff" stroke-opacity=".58" stroke-width="2"/>
+  <path d="M20 24h24M20 32h18M20 40h24" stroke="#4dffb4" stroke-width="3" stroke-linecap="round"/>
+  <path d="M50 14l-7 7M14 50l7-7" stroke="#4a7dff" stroke-width="2" stroke-linecap="round"/>
+</svg>

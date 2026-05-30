@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Soumya Saurav Pattnaik Portfolio preview">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#2ee9ff" stop-opacity=".9"/>
+      <stop offset=".55" stop-color="#4a7dff" stop-opacity=".82"/>
+      <stop offset="1" stop-color="#4dffb4" stop-opacity=".85"/>
+    </linearGradient>
+    <pattern id="grid" width="64" height="64" patternUnits="userSpaceOnUse">
+      <path d="M64 0H0v64" fill="none" stroke="#ffffff" stroke-opacity=".08"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="#08090d"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <path d="M0 106c190-72 303-54 465 10 190 76 373 83 735-50v564H0z" fill="#10131a" opacity=".75"/>
+  <rect x="70" y="78" width="1060" height="474" rx="8" fill="#111722" fill-opacity=".82" stroke="#2ee9ff" stroke-opacity=".36"/>
+  <path d="M94 115h310M94 515h260M796 115h242M855 515h183" stroke="url(#g)" stroke-width="3" stroke-linecap="round"/>
+  <text x="94" y="238" fill="#f5fbff" font-family="Inter, Arial, sans-serif" font-size="48" font-weight="800">Soumya Saurav Pattnaik Portfolio</text>
+  <text x="96" y="306" fill="#b9f7ff" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="600">Senior SDET | Automation Architect | AI-Driven Testing Specialist</text>
+  <text x="96" y="377" fill="#a9b5c5" font-family="Inter, Arial, sans-serif" font-size="24">Engineering quality at scale with mobile, API, web, CI/CD,</text>
+  <text x="96" y="413" fill="#a9b5c5" font-family="Inter, Arial, sans-serif" font-size="24">observability, performance, and AI-assisted automation.</text>
+  <rect x="880" y="204" width="150" height="150" rx="8" fill="#2ee9ff" fill-opacity=".1" stroke="#2ee9ff" stroke-opacity=".45"/>
+  <text x="915" y="298" fill="#ffffff" font-family="Inter, Arial, sans-serif" font-size="54" font-weight="800">SS</text>
+  <circle cx="945" cy="280" r="118" fill="none" stroke="#4dffb4" stroke-opacity=".2" stroke-width="2"/>
+</svg>
